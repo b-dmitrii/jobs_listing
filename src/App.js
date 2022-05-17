@@ -1,5 +1,5 @@
 import "./App.css";
-import JobsView from "./views/jobs-view";
+import JobsView from "./views/jobs-view.tsx";
 
 function App() {
   return (

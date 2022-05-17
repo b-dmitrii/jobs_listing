@@ -1,16 +1,18 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import { JobsModel } from "../model/jobs-model";
+import { Jobs } from "../model/jobs-model";
+// @ts-ignore
+import { JobsModel } from "../model/jobs-model.ts";
 
 export class JobsViewModel {
-  jobs = [];
-  filteringJobs = [];
+  jobs: Jobs[] = [];
+  filteringJobs: Jobs[] = [];
   constructor() {
     makeAutoObservable(this, undefined, { autoBind: true });
   }
 
-  async loadData() {
+  async loadData(): Promise<void> {
     try {
-      const data = await JobsModel.getJobs();
+      const data: Jobs[] = await JobsModel.getJobs();
 
       runInAction(() => {
         this.jobs = data;
@@ -21,7 +23,7 @@ export class JobsViewModel {
     }
   }
 
-  getFilterJobs(filter, data) {
+  getFilterJobs(filter: string[]): void {
     this.filteringJobs = this.jobs.filter((el) =>
       filter.every(
         (item) =>
@@ -31,7 +33,5 @@ export class JobsViewModel {
           item === el.level
       )
     );
-
-    console.log(this.filteringJobs);
   }
 }

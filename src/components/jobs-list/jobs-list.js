@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import JobItem from "../job-item/job-item";
+import JobItem from "../job-item/job-item.tsx";
 
 const Container = styled.div``;
 

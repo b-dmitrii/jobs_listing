@@ -157,10 +157,10 @@ const JobItem = ({ job, setFilteringList }) => {
     logo,
   } = job;
 
-  const skillsArr = [role, level, ...languages, ...tools];
+  const skillsArr: string[] = [role, level, ...languages, ...tools];
 
-  const filteringJobs = (skill) => {
-    setFilteringList((prev) => [...prev, skill]);
+  const filteringJobs = (skill: string) => {
+    setFilteringList((prev: string[]) => [...prev, skill]);
   };
 
   return (

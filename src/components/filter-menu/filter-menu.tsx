@@ -54,13 +54,15 @@ const ClearButton = styled.button`
   }
 `;
 
-export const FilterMenu = ({ filteringList, setFilteringList }) => {
-  const filteringListSet = [...new Set(filteringList)];
+export const FilterMenu = ({ filteringList = [], setFilteringList }) => {
+  const filteringListSet: string[] = [...new Set(filteringList)];
+
+  console.log(filteringListSet);
   const onClearMenu = () => {
     setFilteringList([]);
   };
 
-  const deleteSelectedEl = (el) => {
+  const deleteSelectedEl = (el: string) => {
     setFilteringList(() => {
       return filteringListSet.filter((item) => item !== el);
     });

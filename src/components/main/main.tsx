@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-
-import { FilterMenu } from "../filter-menu/filter-menu";
+// @ts-ignore
+import { FilterMenu } from "../filter-menu/filter-menu.tsx";
 import { Header } from "../header/header";
+
 import JobsList from "../jobs-list/jobs-list";
 
 const Container = styled.div`
@@ -15,8 +16,9 @@ export const Main = ({ jobs, getFilterJobs }) => {
   const [filteringList, setFilteringList] = useState([]);
 
   useEffect(() => {
-    getFilterJobs(filteringList, jobs);
-  }, [filteringList, getFilterJobs, jobs]);
+    getFilterJobs(filteringList);
+    // eslint-disable-next-line
+  }, [filteringList]);
   return (
     <>
       <Header />
